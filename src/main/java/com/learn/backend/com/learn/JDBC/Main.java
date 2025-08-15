@@ -10,7 +10,11 @@ public static void main(String[] args) throws ClassNotFoundException{
 	String username ="root";
 	String password = "Pass@1234";
 	
-	String query = "Select * from students;";
+	//String query = "INSERT INTO students(id,name,contact)VALUES(3,'Badekar',9756852356);"; 
+	
+	//String query = "DELETE FROM students WHERE id =3;";
+	
+	String query = "UPDATE students SET name = 'Dada', contact =9565452585 WHERE id=2;";
 	
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -23,26 +27,18 @@ public static void main(String[] args) throws ClassNotFoundException{
 	try {
 		Connection conn = DriverManager.getConnection(urlString,username,password);
 		System.out.println("Database Connected Successfully");
-		Statement stmt = conn.createStatement();
+		Statement stmt = conn.createStatement();  
 		
-		ResultSet rs = stmt.executeQuery(query);
-
-		while(rs.next()) {
-			int id = rs.getInt("id");
-			String name = rs.getString("name");
-			long contact = rs.getLong("contact");
-			
-			System.out.println("=========================");
-			
-			System.out.println("ID: "+id);
-			System.out.println("Name: "+name);
-			System.out.println("Contact: "+contact);
-			
+		   int rowsaffected = stmt.executeUpdate(query);
+      
+		 if(rowsaffected>0) {
+			 System.out.println("Record Updated Successfull."+rowsaffected+"row(s) Affected");
+		 }else {
+			System.out.println("Insertion Failed");
 		}
-		
-		
+			
 		System.out.println("=========================");
-		rs.close();
+	
 		stmt.close();
 		conn.close();
 		System.out.println();
