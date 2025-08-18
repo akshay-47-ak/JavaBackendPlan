@@ -1,6 +1,6 @@
 package com.learn.backend.com.learn.JDBC;
 
-import java.nio.channels.Pipe.SourceChannel;
+
 import java.sql.*;
 public class Test {
 
@@ -38,7 +38,7 @@ public class Test {
 		    	System.out.println("Name: "+name);
 		    	System.out.println("Contact: "+contact);
 		    	System.out.println("");
-		    	System.out.println("========================");
+		    	System.out.println("======================== ");
 		    }
 		
 		    rSet.close();
